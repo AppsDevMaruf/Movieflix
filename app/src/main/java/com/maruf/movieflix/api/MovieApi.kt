@@ -11,7 +11,7 @@ interface MovieApi {
     //discover Movie
     // https://api.themoviedb.org/3/discover/movie?api_key=cd890f94a756b1518a2a17617a5b430e
     @GET("discover/movie?api_key=${Constants.API_KEY}")
-    suspend fun getDiscoverMovie(@Query("page") page: Int): Response<DiscoverMovie>
+    suspend fun getDiscoverMovie(@Query("page") page: Int): DiscoverMovie
 /*
     @GET("discover/movie?")
     suspend fun getDiscoverMovie(@Query("api_key") apiKey: String, @Query("page") page: Int): Response<DiscoverMovie>*/

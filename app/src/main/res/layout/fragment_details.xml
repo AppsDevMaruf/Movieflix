@@ -6,9 +6,7 @@
     <data>
 
     </data>
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView
+   <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
@@ -304,7 +302,7 @@
                     android:fontFamily="@font/dm_sans_medium"
                     android:gravity="center_vertical"
                     android:text="Crew"
-                    android:textColor="@color/primary"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

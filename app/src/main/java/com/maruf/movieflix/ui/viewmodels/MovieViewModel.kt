@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.maruf.movieflix.MovieRepo
+import androidx.paging.cachedIn
+import com.maruf.movieflix.data.repo.MovieRepo
 import com.maruf.movieflix.data.model.DiscoverMovie
 import com.maruf.movieflix.utils.NetworkResult
 import com.maruf.movieflix.utils.NoInternetException
@@ -15,13 +16,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val movieRepo: MovieRepo
+    movieRepo: MovieRepo
 ) : ViewModel() {
 
 
 // discover movies start
 
-    private var _discoverMovieVMLD =
+
+    val movieListVMLD=movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
+
+/*    private var _discoverMovieVMLD =
         MutableLiveData<NetworkResult<DiscoverMovie>>()
     val discoverMovieVMLD: LiveData<NetworkResult<DiscoverMovie>>
         get() = _discoverMovieVMLD
@@ -56,7 +60,7 @@ class MovieViewModel @Inject constructor(
             }
         }
 
-    }
+    }*/
 
 
 }

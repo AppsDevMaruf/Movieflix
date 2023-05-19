@@ -90,7 +90,8 @@ dependencies {
 
     //progress
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
-
+    //load image
+    implementation 'io.coil-kt:coil:2.3.0'
 
 
 }

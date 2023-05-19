@@ -16,7 +16,7 @@ class MovieRepo @Inject constructor(private val movieApi: MovieApi) {
     ).liveData
 
     //details movies
-    suspend fun detailsMovieRepo(movieId:Int,apiKey:String) = movieApi.getDetailsMovie(movieId,apiKey)
+    suspend fun detailsMovieRepo(movieId:Int) = movieApi.getDetailsMovie(movieId)
 
 
 }

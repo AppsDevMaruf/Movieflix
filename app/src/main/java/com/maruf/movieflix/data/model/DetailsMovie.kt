@@ -39,7 +39,7 @@ data class DetailsMovie(
     @SerializedName("revenue")
     val revenue: Int,
     @SerializedName("runtime")
-    val runtime: Int,
+    val runtime: Double,
     @SerializedName("spoken_languages")
     val spokenLanguages: List<SpokenLanguage>,
     @SerializedName("status")

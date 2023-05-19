@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
+import com.maruf.movieflix.data.model.DetailsMovie
 import com.maruf.movieflix.data.repo.MovieRepo
 import com.maruf.movieflix.data.model.DiscoverMovie
 import com.maruf.movieflix.utils.NetworkResult
@@ -16,42 +17,51 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    movieRepo: MovieRepo
+    val movieRepo: MovieRepo
 ) : ViewModel() {
 
+    private var currentMovieId: Int = 0
+
+    fun setCurrentMovieId(movieId: Int) {
+        currentMovieId = movieId
+    }
+
+    fun getCurrentMovieId(): Int {
+        return currentMovieId
+    }
 
 // discover movies start
 
-    val movieListVMLD=movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
+    val movieListVMLD = movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
 
-/*    private var _discoverMovieVMLD =
-        MutableLiveData<NetworkResult<DiscoverMovie>>()
-    val discoverMovieVMLD: LiveData<NetworkResult<DiscoverMovie>>
-        get() = _discoverMovieVMLD
+    private var _detailsMovieVMLD =
+        MutableLiveData<NetworkResult<DetailsMovie>>()
+    val detailsMovieVMLD: LiveData<NetworkResult<DetailsMovie>>
+        get() = _detailsMovieVMLD
 
-    fun getDiscoverMovieVM(page: Int) {
+    fun getDetailsMovieVM(movieId: Int) {
 
-        _discoverMovieVMLD.postValue(NetworkResult.Loading())
+        _detailsMovieVMLD.postValue(NetworkResult.Loading())
 
 
         viewModelScope.launch {
 
             try {
-                val response = movieRepo.discoverMovieRepo(page)
+                val response = movieRepo.detailsMovieRepo(movieId)
 
                 if (response.isSuccessful && response.body() != null) {
 
 
-                    _discoverMovieVMLD.postValue(NetworkResult.Success(response.body()!!))
+                    _detailsMovieVMLD.postValue(NetworkResult.Success(response.body()!!))
 
                 } else if (response.errorBody() != null) {
 
                     val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-                    _discoverMovieVMLD.postValue(NetworkResult.Error(errorObj.getString("message")))
+                    _detailsMovieVMLD.postValue(NetworkResult.Error(errorObj.getString("message")))
 
                 }
             } catch (noInternetException: NoInternetException) {
-                _discoverMovieVMLD.postValue(noInternetException.localizedMessage?.let {
+                _detailsMovieVMLD.postValue(noInternetException.localizedMessage?.let {
                     NetworkResult.Error(
                         it
                     )
@@ -59,7 +69,7 @@ class MovieViewModel @Inject constructor(
             }
         }
 
-    }*/
+    }
 
 
 }

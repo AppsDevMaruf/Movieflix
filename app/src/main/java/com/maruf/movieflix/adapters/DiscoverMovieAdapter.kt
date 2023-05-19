@@ -1,5 +1,7 @@
-package com.maruf.movieflix.paging
+package com.maruf.movieflix.adapters
+
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,8 +14,11 @@ import com.maruf.movieflix.databinding.SingleMovieBinding
 import com.maruf.movieflix.utils.Constants
 
 
-class DiscoverMovieAdapter :
+class DiscoverMovieAdapter(var movieListener: MovieListener) :
     PagingDataAdapter<DiscoverMovie.Result, DiscoverMovieAdapter.DiscoverMovieViewHolder>(Comparator) {
+    interface MovieListener {
+        fun movieItemClick(movieId:Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverMovieViewHolder {
 
@@ -27,26 +32,36 @@ class DiscoverMovieAdapter :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DiscoverMovieViewHolder, position: Int) {
         getItem(position)?.let {
-            Log.i(Constants.TAG, "binObserverDM: $it")
-            val poster = Constants.IMG_PREFIX+it.posterPath
+            holder.itemView.setOnClickListener {_ ->
+                movieListener.movieItemClick(it.id)
+            }
+
+            val poster = Constants.IMG_PREFIX + it.posterPath
             holder.binding.moviePoster.load(poster)
-            holder.binding.movieName.text = it.originalTitle
+            holder.binding.movieName.text = it.title
         }
 
     }
 
 
-  inner  class DiscoverMovieViewHolder(val binding: SingleMovieBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class DiscoverMovieViewHolder(val binding: SingleMovieBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     companion object {
         private val Comparator =
             object : DiffUtil.ItemCallback<DiscoverMovie.Result>() {
-                override fun areItemsTheSame(oldItem: DiscoverMovie.Result, newItem: DiscoverMovie.Result): Boolean {
+                override fun areItemsTheSame(
+                    oldItem: DiscoverMovie.Result,
+                    newItem: DiscoverMovie.Result
+                ): Boolean {
                     return oldItem.id == newItem.id
                 }
 
-                override fun areContentsTheSame(oldItem: DiscoverMovie.Result, newItem: DiscoverMovie.Result): Boolean {
+                override fun areContentsTheSame(
+                    oldItem: DiscoverMovie.Result,
+                    newItem: DiscoverMovie.Result
+                ): Boolean {
                     return oldItem == newItem
                 }
 

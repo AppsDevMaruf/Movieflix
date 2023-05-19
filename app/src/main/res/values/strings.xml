@@ -2,4 +2,6 @@
     <string name="app_name">Movie Flix</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="find_movies_tv_series_and_more">Find Movies, Tv series, and more…</string>
+    <string name="search"><font color="#FFFFFF">  Search</font></string>
 </resources>

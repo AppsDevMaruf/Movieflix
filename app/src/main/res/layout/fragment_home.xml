@@ -6,16 +6,105 @@
 
     </data>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.HomeFragment">
+        android:background="@color/backgroundColor">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
+            android:id="@+id/MovieLayout_movieFrag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
 
-    </FrameLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:includeFontPadding="false"
+                android:letterSpacing=".05"
+                android:text="@string/find_movies_tv_series_and_more"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/searchEdt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/border_back_grey"
+                android:drawableStart="@drawable/search"
+                android:drawablePadding="4dp"
+                android:hint="@string/search"
+                android:inputType="text"
+                android:maxHeight="48dp"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:paddingStart="8dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="Movies"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Tv Series"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Documentary"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/popular_MovieSeeAll_movieFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Sports"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/discoverMovieRecView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

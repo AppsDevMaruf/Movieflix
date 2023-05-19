@@ -6,5 +6,13 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="light_black">#E4000000</color>
+    <color name="searchbarColor">#211b30</color>
+    <color name="backgroundColor">#15121d</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="backGround">#1F2123</color>
+    <color name="backGroundAd">#0E1011</color>
+    <color name="mainText">#FFFFFFFF</color>
+    <color name="textAd">#BABABA</color>
+    <color name="primary">#F2B833</color>
 </resources>

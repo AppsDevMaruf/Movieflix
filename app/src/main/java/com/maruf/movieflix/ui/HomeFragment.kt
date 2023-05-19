@@ -25,19 +25,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun configUi() {
-
         adapter = DiscoverMovieAdapter()
         binding.discoverMovieRecView.setHasFixedSize(true)
-        binding.discoverMovieRecView.adapter = adapter.withLoadStateHeaderAndFooter(
-            header = LoaderAdapter(),
-            footer = LoaderAdapter()
-        )
-        movieViewModel.movieListVMLD
+        binding.discoverMovieRecView.adapter = adapter
 
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun binObserver() {
+
 
         GlobalScope.launch(Dispatchers.Main) {
             movieViewModel.movieListVMLD.observe(viewLifecycleOwner) {
@@ -46,7 +41,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
             }
         }
-
 
 
     }

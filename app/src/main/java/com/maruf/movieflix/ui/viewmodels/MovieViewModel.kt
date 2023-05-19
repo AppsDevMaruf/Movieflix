@@ -22,7 +22,6 @@ class MovieViewModel @Inject constructor(
 
 // discover movies start
 
-
     val movieListVMLD=movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
 
 /*    private var _discoverMovieVMLD =

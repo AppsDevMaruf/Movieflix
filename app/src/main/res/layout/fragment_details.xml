@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
         tools:context=".ui.DetailsFragment">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +28,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <ImageView
                 android:id="@+id/backBtn_movie_Details"
                 android:layout_width="30dp"
@@ -40,7 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <FrameLayout
                 android:id="@+id/adultCheckLayout_movieDetails"
                 android:layout_width="38dp"
                 android:layout_height="22dp"
@@ -62,7 +60,7 @@
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+            </FrameLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -280,40 +278,19 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/dm_sans_medium"
                     android:gravity="center_vertical"
-                    android:text="Cast"
+                    android:text="Related Movies"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/castRecView_movieDetails"
+                    android:id="@+id/relatedRecView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:fontFamily="@font/dm_sans_medium"
-                    android:gravity="center_vertical"
-                    android:text="Crew"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/crewRecView_movieDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-
-                    />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/single_movie"
+                    android:orientation="horizontal" />
 
             </LinearLayout>
 
@@ -330,9 +307,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 </layout>

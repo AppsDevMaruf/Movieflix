@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.maruf.movieflix.data.model.DiscoverMovie
 import com.maruf.movieflix.databinding.RelatedMovieBinding
-import com.maruf.movieflix.databinding.SingleMovieBinding
 import com.maruf.movieflix.utils.Constants
+import com.maruf.movieflix.utils.dateFormat
+import com.maruf.movieflix.utils.dateFormatOnlyYear
 
 
 class RelatedMovieAdapter() :
@@ -33,7 +34,10 @@ class RelatedMovieAdapter() :
             val poster = Constants.IMG_PREFIX + it.posterPath
             holder.binding.relatedMovieImg.load(poster)
             holder.binding.relatedMovieName.text = it.title
-            holder.binding.relatedMoviesReleaseYear.text = it.releaseDate
+            it.releaseDate.let {date->
+                holder.binding.relatedMoviesReleaseYear.text = dateFormatOnlyYear(date)
+            }
+
         }
 
     }

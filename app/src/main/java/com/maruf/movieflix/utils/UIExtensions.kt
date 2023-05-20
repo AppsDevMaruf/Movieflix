@@ -33,6 +33,25 @@ fun Fragment.timeFormat(zoneTime: String): String {
 
 }
 
+fun Any.dateFormatOnlyYear(date: String): String {
+
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val date = dateFormat.parse(date)
+    val year = SimpleDateFormat("yyyy").format(date)
+    return year
+
+
+}
+fun Any.dateFormat(date: String): String {
+
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val date = dateFormat.parse(date)
+    val formatedDate = SimpleDateFormat("MMMM dd yyyy").format(date)
+    return formatedDate
+
+
+}
+
 fun View.hide() {
     visibility = View.INVISIBLE
 }

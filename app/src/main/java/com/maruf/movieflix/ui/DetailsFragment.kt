@@ -17,6 +17,7 @@ import com.maruf.movieflix.ui.viewmodels.MovieViewModel
 import com.maruf.movieflix.utils.Constants.IMG_PREFIX
 import com.maruf.movieflix.utils.Constants.TAG
 import com.maruf.movieflix.utils.NetworkResult
+import com.maruf.movieflix.utils.dateFormat
 import com.maruf.movieflix.utils.hide
 import com.maruf.movieflix.utils.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,7 +87,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             movieName.text = details.title
             durationMovieDetails.text = "${details.runtime} minutes"
             rating.text = "${details.voteAverage} IMDb"
-            releaseDateMovieDetails.text = details.releaseDate
+            details.releaseDate.let {date->
+                releaseDateMovieDetails.text = dateFormat(date)
+            }
+
             genreMovieDetails.text = details.genres[0].name
             movieOverviewMovieDetails.text = details.overview
             if (details.adult) {

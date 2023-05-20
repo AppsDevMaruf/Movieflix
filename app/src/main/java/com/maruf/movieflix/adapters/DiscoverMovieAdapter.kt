@@ -9,6 +9,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import coil.transform.Transformation
+import com.maruf.movieflix.R
 import com.maruf.movieflix.data.model.DiscoverMovie
 import com.maruf.movieflix.databinding.SingleMovieBinding
 import com.maruf.movieflix.utils.Constants
@@ -37,7 +41,11 @@ class DiscoverMovieAdapter(var movieListener: MovieListener) :
             }
 
             val poster = Constants.IMG_PREFIX + it.posterPath
-            holder.binding.moviePoster.load(poster)
+            holder.binding.moviePoster.load(poster){
+                crossfade(true)
+                placeholder(R.drawable.loading)
+                transformations(RoundedCornersTransformation())
+            }
             holder.binding.movieName.text = it.title
         }
 

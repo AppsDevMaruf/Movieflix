@@ -7,6 +7,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.RoundedCornersTransformation
+import com.maruf.movieflix.R
 import com.maruf.movieflix.data.model.DiscoverMovie
 import com.maruf.movieflix.databinding.RelatedMovieBinding
 import com.maruf.movieflix.utils.Constants
@@ -32,11 +34,16 @@ class RelatedMovieAdapter() :
         getItem(position)?.let {
 
             val poster = Constants.IMG_PREFIX + it.posterPath
-            holder.binding.relatedMovieImg.load(poster)
-            holder.binding.relatedMovieName.text = it.title
-            it.releaseDate.let {date->
-                holder.binding.relatedMoviesReleaseYear.text = dateFormatOnlyYear(date)
+            holder.binding.relatedMovieImg.load(poster){
+                crossfade(true)
+                placeholder(R.drawable.loading)
+                transformations(RoundedCornersTransformation())
             }
+            holder.binding.relatedMovieName.text = it.title
+            if (it.releaseDate!=""){
+                holder.binding.relatedMoviesReleaseYear.text = dateFormatOnlyYear(it.releaseDate)
+            }
+
 
         }
 

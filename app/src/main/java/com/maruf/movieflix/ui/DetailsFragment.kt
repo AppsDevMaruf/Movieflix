@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 import com.maruf.movieflix.BaseFragment
 import com.maruf.movieflix.R
 import com.maruf.movieflix.adapters.DiscoverMovieAdapter
@@ -83,14 +85,17 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @SuppressLint("SetTextI18n")
     private fun setDetails(details: DetailsMovie) {
         binding.apply {
-            movieImg.load(IMG_PREFIX + details.posterPath)
+            movieImg.load(IMG_PREFIX + details.posterPath){
+                crossfade(true)
+                placeholder(R.drawable.loading)
+                transformations(RoundedCornersTransformation())
+            }
             movieName.text = details.title
             durationMovieDetails.text = "${details.runtime} minutes"
             rating.text = "${details.voteAverage} IMDb"
-            details.releaseDate.let {date->
-                releaseDateMovieDetails.text = dateFormat(date)
+            if (details.releaseDate!=""){
+                releaseDateMovieDetails.text = dateFormat(details.releaseDate)
             }
-
             genreMovieDetails.text = details.genres[0].name
             movieOverviewMovieDetails.text = details.overview
             if (details.adult) {

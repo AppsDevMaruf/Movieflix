@@ -2,7 +2,6 @@ package com.maruf.movieflix.ui
 
 import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.maruf.movieflix.paging.LoaderAdapter
 import com.maruf.movieflix.BaseFragment
@@ -31,17 +30,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),DiscoverMovieAdapter.Mo
             footer = LoaderAdapter()
         )
 
+
+    }
+
+    override fun binObserver() {
+
         GlobalScope.launch(Dispatchers.Main) {
-            movieViewModel.movieListVMLD.observe(viewLifecycleOwner) {
+            movieViewModel.discoverMovieListVMLD.observe(viewLifecycleOwner) {
                 adapter.submitData(lifecycle, it)
                 Log.i(TAG, "binObserver: $it")
 
             }
         }
-    }
-
-    override fun binObserver() {
-
     }
 
     override fun movieItemClick(movieId: Int) {

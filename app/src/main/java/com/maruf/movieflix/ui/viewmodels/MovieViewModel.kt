@@ -31,8 +31,15 @@ class MovieViewModel @Inject constructor(
     }
 
 // discover movies start
+    val discoverMovieListVMLD = movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
+// discover movies end
 
-    val movieListVMLD = movieRepo.discoverMovieRepo().cachedIn(viewModelScope)
+// related movies start
+    val relatedMovieListVMLD = movieRepo.relatedMovieRepo(movieId =currentMovieId ).cachedIn(viewModelScope)
+// related movies end
+
+
+// details movies start
 
     private var _detailsMovieVMLD =
         MutableLiveData<NetworkResult<DetailsMovie>>()
@@ -70,6 +77,52 @@ class MovieViewModel @Inject constructor(
         }
 
     }
+
+//details movie end
+/*
+
+// related movies start
+
+
+    private var _relatedMovieVMLD =
+        MutableLiveData<NetworkResult<DiscoverMovie>>()
+    val relatedMovieVMLD: LiveData<NetworkResult<DiscoverMovie>>
+        get() = _relatedMovieVMLD
+
+    fun getRelatedMovieVM(movieId: Int) {
+
+        _relatedMovieVMLD.postValue(NetworkResult.Loading())
+
+
+        viewModelScope.launch {
+
+            try {
+                val response = movieRepo.relatedMovieRepo(movieId)
+
+                if (response.isSuccessful && response.body() != null) {
+
+
+                    _relatedMovieVMLD.postValue(NetworkResult.Success(response.body()!!))
+
+                } else if (response.errorBody() != null) {
+
+                    val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
+                    _relatedMovieVMLD.postValue(NetworkResult.Error(errorObj.getString("message")))
+
+                }
+            } catch (noInternetException: NoInternetException) {
+                _relatedMovieVMLD.postValue(noInternetException.localizedMessage?.let {
+                    NetworkResult.Error(
+                        it
+                    )
+                })
+            }
+        }
+
+    }
+*/
+
+
 
 
 }

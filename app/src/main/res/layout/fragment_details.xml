@@ -96,7 +96,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/dm_sans_bold"
                         android:maxLines="2"
-                        android:text="Power"
+                        android:text="@string/power"
                         android:textColor="@color/mainText"
                         android:textSize="27sp"
                         android:textStyle="bold" />
@@ -114,7 +114,7 @@
                             android:fontFamily="@font/dm_sans_medium"
                             android:gravity="center"
                             android:maxLines="2"
-                            android:text="HD"
+                            android:text="@string/hd"
                             android:textColor="@color/mainText"
                             android:textSize="12sp"
                             android:textStyle="bold" />
@@ -140,7 +140,7 @@
                         android:fontFamily="@font/dm_sans_medium"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:text="152 minutes"
+                        android:text="@string/_152_minutes"
                         android:textColor="@color/textAd"
                         android:textSize="12sp"
                         app:drawableLeftCompat="@drawable/baseline_access_time" />
@@ -152,9 +152,9 @@
                         android:layout_marginEnd="10dp"
                         android:drawablePadding="4dp"
                         android:fontFamily="@font/dm_sans_medium"
-                        android:gravity="center"
                         android:maxLines="2"
-                        android:text="7.0 IMDb"
+                        android:gravity="center"
+                        android:text="@string/_7_0_imdb"
                         android:textColor="@color/textAd"
                         android:textSize="12sp"
                         app:drawableLeftCompat="@drawable/round_star_rate_24" />
@@ -183,7 +183,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/dm_sans_bold"
                         android:maxLines="2"
-                        android:text="Release Date"
+                        android:text="@string/release_date"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                         android:textColor="@color/textAd" />
 
@@ -195,7 +195,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/dm_sans_bold"
                         android:maxLines="2"
-                        android:text="Genre"
+                        android:text="@string/genre"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                         android:textColor="@color/textAd" />
                 </LinearLayout>
@@ -216,7 +216,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/dm_sans_bold"
                         android:maxLines="2"
-                        android:text="December 7,2017"
+                        android:text="@string/december_7_2017"
                         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                         android:textColor="@color/textAd" />
 
@@ -266,7 +266,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/dm_sans_medium"
                     android:maxLines="8"
-                    android:text="overview"
+                    android:text="@string/overview"
                     android:textColor="@color/textAd"
                   android:textAppearance="@style/TextAppearance.Material3.BodySmall"/>
 
@@ -278,7 +278,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/dm_sans_medium"
                     android:gravity="center_vertical"
-                    android:text="Related Movies"
+                    android:text="@string/related_movies"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -288,9 +288,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/single_movie"
-                    android:orientation="horizontal" />
+                    tools:listitem="@layout/related_movie" />
 
             </LinearLayout>
 
@@ -306,7 +306,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

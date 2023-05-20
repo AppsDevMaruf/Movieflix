@@ -23,6 +23,6 @@ interface MovieApi {
 
     //recommendations
     //https://api.themoviedb.org/3/movie/{movie_id}/recommendations
-    @GET("movie/{movie_id}/recommendations")
-    fun getRelatedMovie(@Path("movie_id") movieId: Int,@Query("api_key") apiKey: String,): Response<DetailsMovie>
+    @GET("movie/{movie_id}/recommendations?api_key=${API_KEY}")
+    suspend fun getRelatedMovie(@Path("movie_id") movieId: Int,@Query("page") page: Int): DiscoverMovie
 }

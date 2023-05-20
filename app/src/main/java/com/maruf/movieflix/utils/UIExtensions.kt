@@ -2,6 +2,7 @@ package com.maruf.movieflix.utils
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
@@ -16,8 +17,10 @@ fun Fragment.timeFormat(zoneTime: String): String {
 
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-        val parsed = ZonedDateTime.parse(zoneTime, DateTimeFormatter.ISO_DATE_TIME).withZoneSameInstant(
-            ZoneId.of(TimeZone.getDefault().id))
+        val parsed =
+            ZonedDateTime.parse(zoneTime, DateTimeFormatter.ISO_DATE_TIME).withZoneSameInstant(
+                ZoneId.of(TimeZone.getDefault().id)
+            )
         //  val parsedDate = LocalDateTime.parse(zoneTime, DateTimeFormatter.ISO_DATE_TIME)
         //sun mar 5 2023 12:21 PM
         parsed.format(DateTimeFormatter.ofPattern("EEE MMM dd yyyy hh:mm a"))
@@ -30,7 +33,18 @@ fun Fragment.timeFormat(zoneTime: String): String {
 
 }
 
+fun View.hide() {
+    visibility = View.INVISIBLE
+}
 
+fun View.gone() {
+    visibility = View.GONE
+}
+
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
 
 
 

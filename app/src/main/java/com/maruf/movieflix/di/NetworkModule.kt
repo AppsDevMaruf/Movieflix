@@ -1,5 +1,6 @@
 package com.maruf.movieflix.di
 
+import com.maruf.movieflix.api.AuthInterceptor
 import com.maruf.movieflix.api.MovieApi
 import com.maruf.movieflix.utils.Constants
 import dagger.Module
@@ -29,8 +30,9 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(interceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(120, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)

@@ -1,8 +1,6 @@
 package com.maruf.movieflix.adapters
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -10,41 +8,38 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.maruf.movieflix.data.model.DiscoverMovie
+import com.maruf.movieflix.databinding.RelatedMovieBinding
 import com.maruf.movieflix.databinding.SingleMovieBinding
 import com.maruf.movieflix.utils.Constants
 
 
-class DiscoverMovieAdapter(var movieListener: MovieListener) :
-    PagingDataAdapter<DiscoverMovie.Result, DiscoverMovieAdapter.DiscoverMovieViewHolder>(Comparator) {
-    interface MovieListener {
-        fun movieItemClick(movieId: Int)
-    }
+class RelatedMovieAdapter() :
+    PagingDataAdapter<DiscoverMovie.Result, RelatedMovieAdapter.RelatedMovieViewHolder>(Comparator) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverMovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelatedMovieViewHolder {
 
-        val binding = SingleMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RelatedMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return DiscoverMovieViewHolder(binding)
+        return RelatedMovieViewHolder(binding)
 
 
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: DiscoverMovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RelatedMovieViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.itemView.setOnClickListener { _ ->
-                movieListener.movieItemClick(it.id)
-            }
 
             val poster = Constants.IMG_PREFIX + it.posterPath
-            holder.binding.moviePoster.load(poster)
-            holder.binding.movieName.text = it.title
+            holder.binding.relatedMovieImg.load(poster)
+            holder.binding.relatedMovieName.text = it.title
+            holder.binding.relatedMoviesReleaseYear.text = it.releaseDate
         }
 
     }
 
 
-    inner class DiscoverMovieViewHolder(val binding: SingleMovieBinding) :
+    inner class RelatedMovieViewHolder(val binding: RelatedMovieBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 

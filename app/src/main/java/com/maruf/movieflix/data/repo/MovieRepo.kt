@@ -3,7 +3,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.maruf.movieflix.api.MovieApi
-import com.maruf.movieflix.paging.MoviePagingSource
+import com.maruf.movieflix.paging.DiscoverMoviePagingSource
+import com.maruf.movieflix.paging.RelatedMoviePagingSource
 import javax.inject.Inject
 
 class MovieRepo @Inject constructor(private val movieApi: MovieApi) {
@@ -12,11 +13,18 @@ class MovieRepo @Inject constructor(private val movieApi: MovieApi) {
     //discover movies
     fun discoverMovieRepo() = Pager(
         config = PagingConfig(pageSize =20 , maxSize =100),
-        pagingSourceFactory = {MoviePagingSource(movieApi)}
+        pagingSourceFactory = {DiscoverMoviePagingSource(movieApi)}
+    ).liveData
+
+    fun relatedMovieRepo(movieId: Int) = Pager(
+        config = PagingConfig(pageSize =20 , maxSize =100),
+        pagingSourceFactory = {RelatedMoviePagingSource(movieApi)}
     ).liveData
 
     //details movies
     suspend fun detailsMovieRepo(movieId:Int) = movieApi.getDetailsMovie(movieId)
+
+    //suspend fun relatedMovieRepo(movieId:Int) = movieApi.getRelatedMovie(movieId)
 
 
 }

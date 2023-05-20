@@ -1,6 +1,9 @@
 
-
 # 🔖MoveFlix. - The Movie DB
+<h1>Apps Screen<h1>
+<img src=".\app\src\main\res\drawable/home_screen.png" width="25%">
+<img src=".\app\src\main\res\drawable/details_screen.png" width="25%">
+ <br/>
 
 MoveFlix is a Movie database app. This app is integrated with The Movie DB API. This app UI is simple enough to use and the app is a fun way to get an overview of your movie experience. This repo was created with help of awesome UI, Material Design, and the latest features. 
 
@@ -13,9 +16,13 @@ MoveFlix is a Movie database app. This app is integrated with The Movie DB API. 
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [Coroutines Android](https://developer.android.com/kotlin/coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously. Coroutines were added to Kotlin in version 1.3 and are based on established concepts from other languages.
 - [Dependency injection with Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-- [Paging](https://developer.android.com/topic/libraries/architecture/paging))
-- [Material Components for Android](https://github.com/material-components/material-components-android)
-  - Modular and customizable Material Design UI components for Android.
+- [Paging](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) -The Paging library helps you load and display pages of data from a larger dataset from local storage or over network. This approach allows your app to use both network bandwidth and system resources more efficiently
+- [Intercepter](https://square.github.io/okhttp/features/interceptors) - Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls. Here’s a simple interceptor that logs the outgoing request and the incoming response
+- [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) - Navigation occurs between your app's destinations—that is, anywhere in your app to which users can navigate. These destinations are connected via actions.
+A navigation graph is a resource file that contains all of your destinations and actions. The graph represents all of your app's navigation path
+- [Coil](https://coil-kt.github.io/coil/) - An image loading library for Android backed by Kotlin Coroutines
+- [Android-SpinKit](https://github.com/ybq/Android-SpinKit) - Android loading animations. Contribute to ybq/Android-SpinKit development by creating an account on GitHub
+- [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 
 
 ```

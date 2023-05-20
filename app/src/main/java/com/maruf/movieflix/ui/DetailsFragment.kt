@@ -33,7 +33,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     override fun configUi() {
-
+        binding.progressbar.show()
         val currentMovieId = movieViewModel.getCurrentMovieId()
         movieViewModel.getDetailsMovieVM(currentMovieId)
 
@@ -43,10 +43,9 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             footer = LoaderAdapter()
         )
         GlobalScope.launch(Dispatchers.Main) {
-            movieViewModel.relatedMovieListVMLD.observe(viewLifecycleOwner) {
+            movieViewModel.relatedMovieListVMLD(currentMovieId).observe(viewLifecycleOwner) {
                 adapter.submitData(lifecycle, it)
-                Log.i(TAG, "binObserver: $it")
-
+                binding.progressbar.hide()
             }
         }
 
@@ -60,12 +59,12 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override fun binObserver() {
         movieViewModel.detailsMovieVMLD.observe(viewLifecycleOwner) {
-            binding.spinKitMovieDetails.hide()
+            binding.progressbar.hide()
             when (it) {
                 is NetworkResult.Error -> {
                 }
                 is NetworkResult.Loading -> {
-                    binding.spinKitMovieDetails.show()
+                    binding.progressbar.show()
                 }
                 is NetworkResult.Success -> {
                     it.data?.let {details->

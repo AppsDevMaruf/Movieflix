@@ -62,7 +62,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="Movies"
+                    android:text="@string/movies"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textColor="@color/white" />
 
@@ -72,7 +72,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center_vertical"
-                    android:text="Tv Series"
+                    android:text="@string/tv_series"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textColor="@color/white" />
 
@@ -82,7 +82,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center_vertical"
-                    android:text="Documentary"
+                    android:text="@string/documentary"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textColor="@color/white" />
 
@@ -93,7 +93,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center_vertical"
-                    android:text="Sports"
+                    android:text="@string/sports"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                     android:textColor="@color/white" />
 
@@ -109,6 +109,18 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/progressBar"
+                style="@style/SpinKitView.Large.Wave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="400dp"
+                android:visibility="invisible"
+                app:SpinKit_Color="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
     </ScrollView>

@@ -17,7 +17,6 @@ class DiscoverMoviePagingSource(private val movieApi: MovieApi) :
 
             val position = params.key ?: 1
             val response = movieApi.getDiscoverMovie(position)
-            Log.i(TAG, "loadMovieApi: $response")
             LoadResult.Page(
                 data = response.results,
 

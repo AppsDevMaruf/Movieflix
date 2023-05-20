@@ -41,8 +41,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesMovieApi(retrofitBuilder: Retrofit.Builder): MovieApi {
-        return retrofitBuilder.build().create(MovieApi::class.java)
+    fun providesMovieApi(retrofitBuilder: Retrofit.Builder,client: OkHttpClient): MovieApi {
+        return retrofitBuilder.client(client).build().create(MovieApi::class.java)
     }
 
 

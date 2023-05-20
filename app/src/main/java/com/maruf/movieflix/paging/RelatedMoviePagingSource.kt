@@ -1,4 +1,5 @@
 package com.maruf.movieflix.paging
+
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.paging.PagingSource
@@ -10,7 +11,7 @@ import com.maruf.movieflix.utils.Constants
 import com.maruf.movieflix.utils.Constants.TAG
 import java.lang.Exception
 
-class RelatedMoviePagingSource(private val movieApi: MovieApi) :
+class RelatedMoviePagingSource(private val movieId: Int, private val movieApi: MovieApi) :
     PagingSource<Int, DiscoverMovie.Result>() {
 
 
@@ -19,7 +20,7 @@ class RelatedMoviePagingSource(private val movieApi: MovieApi) :
         return try {
 
             val position = params.key ?: 1
-            val response = movieApi.getRelatedMovie(862,position)
+            val response = movieApi.getRelatedMovie(movieId = movieId, position)
             Log.i(TAG, "loadRelatedMovie: $response")
             LoadResult.Page(
                 data = response.results,
@@ -39,7 +40,6 @@ class RelatedMoviePagingSource(private val movieApi: MovieApi) :
             state.closestPageToPosition(it)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(it)?.nextKey?.minus(1)
         }
-
 
 
     }

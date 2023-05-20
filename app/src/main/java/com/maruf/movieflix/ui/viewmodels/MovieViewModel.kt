@@ -35,7 +35,7 @@ class MovieViewModel @Inject constructor(
 // discover movies end
 
 // related movies start
-    val relatedMovieListVMLD = movieRepo.relatedMovieRepo(movieId =currentMovieId ).cachedIn(viewModelScope)
+    fun  relatedMovieListVMLD(movieId:Int) = movieRepo.relatedMovieRepo(movieId).cachedIn(viewModelScope)
 // related movies end
 
 
@@ -79,48 +79,6 @@ class MovieViewModel @Inject constructor(
     }
 
 //details movie end
-/*
-
-// related movies start
-
-
-    private var _relatedMovieVMLD =
-        MutableLiveData<NetworkResult<DiscoverMovie>>()
-    val relatedMovieVMLD: LiveData<NetworkResult<DiscoverMovie>>
-        get() = _relatedMovieVMLD
-
-    fun getRelatedMovieVM(movieId: Int) {
-
-        _relatedMovieVMLD.postValue(NetworkResult.Loading())
-
-
-        viewModelScope.launch {
-
-            try {
-                val response = movieRepo.relatedMovieRepo(movieId)
-
-                if (response.isSuccessful && response.body() != null) {
-
-
-                    _relatedMovieVMLD.postValue(NetworkResult.Success(response.body()!!))
-
-                } else if (response.errorBody() != null) {
-
-                    val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-                    _relatedMovieVMLD.postValue(NetworkResult.Error(errorObj.getString("message")))
-
-                }
-            } catch (noInternetException: NoInternetException) {
-                _relatedMovieVMLD.postValue(noInternetException.localizedMessage?.let {
-                    NetworkResult.Error(
-                        it
-                    )
-                })
-            }
-        }
-
-    }
-*/
 
 
 

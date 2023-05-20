@@ -13,4 +13,8 @@
     <string name="december_7_2017">December 7,2017</string>
     <string name="overview">overview</string>
     <string name="related_movies">Related Movies</string>
+    <string name="sports">Sports</string>
+    <string name="documentary">Documentary</string>
+    <string name="tv_series">Tv Series</string>
+    <string name="movies">Movies</string>
 </resources>

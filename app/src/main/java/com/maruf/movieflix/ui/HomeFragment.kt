@@ -10,6 +10,8 @@ import com.maruf.movieflix.databinding.FragmentHomeBinding
 import com.maruf.movieflix.adapters.DiscoverMovieAdapter
 import com.maruf.movieflix.ui.viewmodels.MovieViewModel
 import com.maruf.movieflix.utils.Constants.TAG
+import com.maruf.movieflix.utils.hide
+import com.maruf.movieflix.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -24,6 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),DiscoverMovieAdapter.Mo
     }
 
     override fun configUi() {
+        binding.progressBar.show()
         adapter = DiscoverMovieAdapter(this)
         binding.discoverMovieRecView.adapter = adapter.withLoadStateHeaderAndFooter(
             header = LoaderAdapter(),
@@ -38,8 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),DiscoverMovieAdapter.Mo
         GlobalScope.launch(Dispatchers.Main) {
             movieViewModel.discoverMovieListVMLD.observe(viewLifecycleOwner) {
                 adapter.submitData(lifecycle, it)
-                Log.i(TAG, "binObserver: $it")
-
+                binding.progressBar.hide()
             }
         }
     }
